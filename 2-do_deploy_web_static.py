@@ -37,7 +37,7 @@ def do_deploy(archive_path):
             api.run('rm -rf /data/web_static/current')
             api.run('ln -sf {} /data/web_static/current'.format(outpath))
             print('New version deployed!')
-        except:
+        except Exception:
             return False
         else:
             return True
