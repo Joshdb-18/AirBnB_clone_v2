@@ -50,13 +50,13 @@ def do_deploy(archive_path):
         folder = '/data/web_static/releases/{}/'.format(no_tgz_name)
         put(archive_path, '/tmp/')
         run('mkdir -p {}'.format(folder))
-        run('tar -xzf /tmp/{} -C {}/'.format(full_filename, folder))
+        run('tar -xzf /tmp/{} -C {}'.format(full_filename, folder))
         run('rm /tmp/{}'.format(full_filename))
-        run('mv {}/web_static/* {}'.format(folder, folder))
-        run('rm -rf {}/web_static'.format(folder))
+        run('mv {}web_static/* {}'.format(folder, folder))
+        run('rm -rf {}web_static'.format(folder))
         current = '/data/web_static/current'
         run('rm -rf {}'.format(current))
-        run('ln -s {}/ {}'.format(folder, current))
+        run('ln -s {} {}'.format(folder, current))
         print("New version deployed!")
         return True
     except Exception:
