@@ -89,5 +89,5 @@ class DBStorage:
         self.__session = scoped_session(session_factory)()
 
     def close(self):
-        """closes the working SQLAlchemy session"""
+        """Closes the working SQLAlchemy session"""
         self.__session.close()
