@@ -31,8 +31,8 @@ def pytext(text='is cool'):
     return 'Python {}'.format(text.replace('_', ' '))
 
 
-@app.route('/number/<n>')
-def num():
+@app.route('/number/<int:n>')
+def num(n):
     """ number route"""
     return '{:d} is a number'.format(n)
 
