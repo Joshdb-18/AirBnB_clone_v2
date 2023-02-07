@@ -8,7 +8,7 @@ Routes:
 from flask import Flask
 from flask import render_template
 from models import storage
-
+from sqlalchemy.sql import text
 
 app = Flask(__name__)
 
@@ -16,9 +16,9 @@ app = Flask(__name__)
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     """Display the HTML page for hbnb home page."""
-    amenities = storage.all("Amenity")
-    places = storage.all("Place")
-    states = storage.all("State")
+    amenities = storage.all(text("Amenity"))
+    places = storage.all(text("Place"))
+    states = storage.all(text("State"))
     return render_template("100-hbnb.html",
                            amenities=amenities,
                            places=places,
@@ -32,4 +32,4 @@ def teardown(excpt=None):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)

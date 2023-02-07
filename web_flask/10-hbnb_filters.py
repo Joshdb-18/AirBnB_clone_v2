@@ -8,6 +8,7 @@ Routes:
 from flask import Flask
 from flask import render_template
 from models import storage
+from sqlalchemy.sql import text
 
 app = Flask(__name__)
 
@@ -15,8 +16,8 @@ app = Flask(__name__)
 @app.route("/hbnb_filters", strict_slashes=False)
 def hbnb_filters():
     """Displays the HBnB filters HTML page."""
-    states = storage.all("State")
-    amenities = storage.all("Amenity")
+    states = storage.all(text("State"))
+    amenities = storage.all(text("Amenity"))
     return render_template("10-hbnb_filters.html",
                            states=states, amenities=amenities)
 
